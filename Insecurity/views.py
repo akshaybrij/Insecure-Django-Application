@@ -17,8 +17,19 @@ def insecure_form_handling(request):
         form = InsecureForm()
         return render(request,'form.html',context={'form':form})
 
-def search(request,string):
-    with connection.cursor() as cursor:
-        cursor.execute('Select * from InsecureModel where title= %s',[string])
-        row=cursor.fetchone()
-    print(row)
+def search(request):
+    #import pdb; pdb.set_trace()
+    if request.method == 'GET':
+        search = request.GET.get('search_query')
+#        import pdb; pdb.set_trace()
+        print(search)
+        with connection.cursor() as cursor:
+        #    import pdb; pdb.set_trace()
+            sql= 'Select * from InsecureModel where title="'+search+'"'
+            try:
+                cursor.execute(sql)
+                row=cursor.fetchone()
+            except Exception as e:
+                import pdb; pdb.set_trace()
+                row=None
+    return render(request,'results.html',context={'row':row})

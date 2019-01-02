@@ -30,6 +30,6 @@ def search(request):
                 cursor.execute(sql)
                 row=cursor.fetchone()
             except Exception as e:
-                import pdb; pdb.set_trace()
+                #import pdb; pdb.set_trace()
                 row=None
     return render(request,'results.html',context={'row':row})

@@ -22,14 +22,12 @@ def search(request):
     if request.method == 'GET':
         search = request.GET.get('search_query')
 #        import pdb; pdb.set_trace()
-        print(search)
+
         with connection.cursor() as cursor:
         #    import pdb; pdb.set_trace()
-            sql= 'Select * from InsecureModel where title="'+search+'"'
-            try:
-                cursor.execute(sql)
-                row=cursor.fetchone()
-            except Exception as e:
-                #import pdb; pdb.set_trace()
-                row=None
+            print(search)
+            sql= 'Select * from InsecureModel where title="' + search + '"'
+            print(sql)
+            cursor.execute(sql)
+            row=cursor.fetchone()
     return render(request,'results.html',context={'row':row})

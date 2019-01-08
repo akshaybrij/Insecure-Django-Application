@@ -4,7 +4,12 @@
 <html>
 	<head><title>Home</title></head>
 	<body>
-		<h2>{{row}}</h2>
+		{% load static %}
+		{% for img in source %}
+		{% if img %}
+<center><img src="{{ MEDIA_URL }}{{ img }}" alt="SRC" height=400 style="padding:50px 50px" /></center>
+{% endif %}
+		{% endfor %}
 	</body>
 </html>
 </div>

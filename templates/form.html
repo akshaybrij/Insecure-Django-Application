@@ -2,7 +2,6 @@
 <html>
 	<head></head>
 	<body>
-		
 		<form method="POST" action="{% url 'insecure_form_handling' %}" enctype='multipart/form-data'>
 		{% csrf_token %}
 		{{form.as_p}}

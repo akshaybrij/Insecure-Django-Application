@@ -52,3 +52,7 @@ def search(request):
 def branch(request):
     pass
 
+def extra_features(request):
+    pass
+
+

@@ -48,3 +48,7 @@ def search(request):
                 source=None
     print(source)
     return render(request,'results.html',context={'row':row, 'source':source})
+
+def branch(request):
+    pass
+
